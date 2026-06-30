@@ -1,0 +1,266 @@
+.layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 1.5rem;
+}
+
+.panel {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.panelHeader h2 {
+  margin: 0;
+  font-size: 1.125rem;
+  color: #0f172a;
+}
+
+.panelHeader span {
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.75rem;
+}
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.375rem;
+  padding: 1rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.productCard:hover:not(:disabled) {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+
+.productCard:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.productName {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.productPrice {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.productStock {
+  font-size: 0.8125rem;
+  color: #64748b;
+}
+
+.emptyCart,
+.loading {
+  color: #64748b;
+}
+
+.cartList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.cartRow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.cartName {
+  margin: 0;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.cartPrice {
+  margin: 0.25rem 0 0;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.cartControls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  grid-column: 1 / -1;
+}
+
+.qtyButton {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.qtyValue {
+  min-width: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.removeButton,
+.linkButton {
+  border: none;
+  background: transparent;
+  color: #b91c1c;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.linkButton {
+  color: #2563eb;
+}
+
+.lineTotal {
+  font-weight: 700;
+  color: #0f172a;
+  align-self: start;
+}
+
+.checkoutForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #334155;
+}
+
+.input {
+  padding: 0.625rem 0.75rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #334155;
+}
+
+.checkoutButton {
+  padding: 0.75rem;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.checkoutButton:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.checkoutButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.error {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  color: #b91c1c;
+  font-size: 0.875rem;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 1000;
+}
+
+.invoice {
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.invoiceTitle {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #0f172a;
+}
+
+.invoiceDate {
+  margin: 0.375rem 0 1rem;
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+.invoiceItems {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.invoiceRow,
+.invoiceSummary .summaryRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.invoiceSummary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
