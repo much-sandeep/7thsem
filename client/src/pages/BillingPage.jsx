@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import AppLayout from '../components/AppLayout';
+import BillHistory from '../components/BillHistory';
 import api from '../services/api';
 import { formatCurrency } from '../utils/formatCurrency';
 import styles from './BillingPage.module.css';
@@ -263,6 +264,8 @@ function BillingPage() {
           )}
         </section>
       </div>
+
+      <BillHistory refreshKey={invoice?.id} />
 
       {invoice && (
         <div className={styles.overlay}>
