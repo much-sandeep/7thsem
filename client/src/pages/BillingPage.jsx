@@ -158,6 +158,8 @@ function BillingPage() {
 
           {loading ? (
             <p className={styles.loading}>Loading products...</p>
+          ) : items.length === 0 ? (
+            <p className={styles.emptyCart}>No products available</p>
           ) : (
             <div className={styles.productGrid}>
               {items.map((item) => (
