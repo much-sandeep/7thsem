@@ -90,6 +90,29 @@ async function initializeDatabase() {
     ) ENGINE=InnoDB
   `);
 
+  await connection.query(`
+    CREATE TABLE IF NOT EXISTS settings (
+      id             INT UNSIGNED NOT NULL AUTO_INCREMENT,
+      min_support    DECIMAL(5,4) NOT NULL,
+      min_confidence DECIMAL(5,4) NOT NULL,
+      PRIMARY KEY (id),
+      CONSTRAINT chk_settings_support    CHECK (min_support    >= 0 AND min_support    <= 1),
+      CONSTRAINT chk_settings_confidence CHECK (min_confidence >= 0 AND min_confidence <= 1)
+    ) ENGINE=InnoDB
+  `);
+
+  const [existingSettings] = await connection.query(
+    'SELECT id FROM settings ORDER BY id ASC LIMIT 1'
+  );
+
+  if (existingSettings.length === 0) {
+    await connection.query(
+      'INSERT INTO settings (min_support, min_confidence) VALUES (?, ?)',
+      [0.05, 0.6]
+    );
+    console.log('Default analytics settings created (min_support: 0.05, min_confidence: 0.60)');
+  }
+
   const [existingAdmin] = await connection.query(
     'SELECT id, password_hash FROM users WHERE username = ?',
     ['admin']

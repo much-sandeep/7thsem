@@ -12,6 +12,7 @@ const authRoutes = require('./routes/auth');
 const dashboardRoutes = require('./routes/dashboard');
 const itemsRoutes = require('./routes/items');
 const billsRoutes = require('./routes/bills');
+const fpGrowthRoutes = require('./routes/fpGrowth');
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -42,6 +43,7 @@ app.get('/', (_req, res) => {
       items: '/api/items',
       bills: '/api/bills',
       dashboard: '/api/dashboard',
+      fpGrowth: '/api/fp-growth',
     },
   });
 });
@@ -51,6 +53,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/items', itemsRoutes);
 app.use('/api/bills', billsRoutes);
+app.use('/api/fp-growth', fpGrowthRoutes);
 
 async function startServer() {
   try {
