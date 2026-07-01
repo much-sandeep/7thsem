@@ -34,9 +34,9 @@ function DailySalesChart({ dailySales }) {
       {
         label: 'Sales (NPR)',
         data: values,
-        borderColor: '#2563eb',
-        backgroundColor: 'rgba(37, 99, 235, 0.12)',
-        pointBackgroundColor: '#2563eb',
+        borderColor: '#059669',
+        backgroundColor: 'rgba(5, 150, 105, 0.12)',
+        pointBackgroundColor: '#059669',
         pointRadius: 3,
         pointHoverRadius: 5,
         borderWidth: 2,

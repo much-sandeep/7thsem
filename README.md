@@ -184,6 +184,3 @@ All prices, totals, and sales figures are formatted in **Nepalese Rupees (NPR)**
 |--------------|--------------|---------|
 | VITE_API_URL | API base URL | /api    |
 
-
-
-

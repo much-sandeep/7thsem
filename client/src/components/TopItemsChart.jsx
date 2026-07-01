@@ -23,8 +23,8 @@ function TopItemsChart({ topItems }) {
       {
         label: 'Units Sold',
         data: values,
-        backgroundColor: 'rgba(37, 99, 235, 0.8)',
-        hoverBackgroundColor: 'rgba(29, 78, 216, 0.95)',
+        backgroundColor: 'rgba(5, 150, 105, 0.8)',
+        hoverBackgroundColor: 'rgba(4, 120, 87, 0.95)',
         borderRadius: 8,
         maxBarThickness: 56,
       },

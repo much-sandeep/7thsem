@@ -1,26 +1,26 @@
 :root {
-  /* Surfaces & background */
-  --color-bg: #f6f7fb;
+  /* Surfaces & background — slate neutrals */
+  --color-bg: #f4f6f8;
   --color-surface: #ffffff;
-  --color-surface-muted: #f8fafc;
-  --color-border: #e6e8ee;
-  --color-border-strong: #cdd2dd;
+  --color-surface-muted: #f1f5f9;
+  --color-border: #e2e8f0;
+  --color-border-strong: #cbd5e1;
 
-  /* Text (dark gray, never pure black) */
-  --color-text: #1e293b;
+  /* Text (dark slate, never pure black) */
+  --color-text: #0f172a;
   --color-text-soft: #475569;
-  --color-muted: #7b8494;
+  --color-muted: #64748b;
 
-  /* Primary — calm indigo */
-  --color-primary: #4f46e5;
-  --color-primary-dark: #4338ca;
-  --color-primary-soft: #eef2ff;
-  --color-primary-border: #c7d2fe;
+  /* Primary — modern emerald */
+  --color-primary: #059669;
+  --color-primary-dark: #047857;
+  --color-primary-soft: #ecfdf5;
+  --color-primary-border: #a7f3d0;
 
-  /* Accent — soft green (success) */
-  --color-accent: #059669;
-  --color-accent-soft: #ecfdf5;
-  --color-accent-border: #a7f3d0;
+  /* Accent — warm amber */
+  --color-accent: #b45309;
+  --color-accent-soft: #fffbeb;
+  --color-accent-border: #fde68a;
 
   /* Danger — muted red (warnings) */
   --color-danger: #dc2626;
@@ -34,9 +34,9 @@
 
   --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.04);
   --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.07);
-  --shadow-lg: 0 16px 36px rgba(79, 70, 229, 0.14);
+  --shadow-lg: 0 16px 36px rgba(5, 150, 105, 0.16);
 
-  --focus-ring: 0 0 0 3px rgba(79, 70, 229, 0.18);
+  --focus-ring: 0 0 0 3px rgba(5, 150, 105, 0.2);
 
   --transition: 0.18s ease;
 }

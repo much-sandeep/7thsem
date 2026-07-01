@@ -37,6 +37,13 @@ function LoginPage() {
     <div className={styles.page}>
       <div className={styles.card}>
         <div className={styles.header}>
+          <div className={styles.brandMark} aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="12" width="4" height="8" rx="1.2" fill="currentColor" />
+              <rect x="10" y="7" width="4" height="13" rx="1.2" fill="currentColor" />
+              <rect x="17" y="3" width="4" height="17" rx="1.2" fill="currentColor" />
+            </svg>
+          </div>
           <h1 className={styles.title}>SmartBasket Analytics</h1>
           <p className={styles.subtitle}>Sign in to your analytics dashboard</p>
         </div>

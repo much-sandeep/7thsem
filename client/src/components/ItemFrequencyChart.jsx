@@ -46,8 +46,8 @@ function ItemFrequencyChart({ itemsets }) {
       {
         label: 'Support Count',
         data: series.map((row) => row.value),
-        backgroundColor: 'rgba(4, 120, 87, 0.8)',
-        hoverBackgroundColor: 'rgba(4, 120, 87, 0.95)',
+        backgroundColor: 'rgba(180, 83, 9, 0.8)',
+        hoverBackgroundColor: 'rgba(146, 64, 14, 0.95)',
         borderRadius: 8,
         maxBarThickness: 44,
       },
