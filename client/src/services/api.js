@@ -87,6 +87,9 @@ export const api = {
       method: 'POST',
       body: JSON.stringify(payload),
     }),
+
+  getFrequentItemsets: () => request('/fp-growth/itemsets'),
+  getAssociationRules: () => request('/fp-growth/rules'),
 };
 
 export default api;

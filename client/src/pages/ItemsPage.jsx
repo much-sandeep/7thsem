@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import AppLayout from '../components/AppLayout';
 import { useAuth } from '../context/AuthContext';
 import api from '../services/api';
+import { formatCurrency } from '../utils/formatCurrency';
 import styles from './ItemsPage.module.css';
 
 const emptyForm = { name: '', price: '', stock: '' };
@@ -159,7 +160,7 @@ function ItemsPage() {
                 items.map((item) => (
                   <tr key={item.id}>
                     <td>{item.name}</td>
-                    <td>${Number(item.price).toFixed(2)}</td>
+                    <td>{formatCurrency(item.price)}</td>
                     <td>{item.stock}</td>
                     {isAdmin && (
                       <td>

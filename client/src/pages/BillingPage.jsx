@@ -1,11 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import AppLayout from '../components/AppLayout';
 import api from '../services/api';
+import { formatCurrency } from '../utils/formatCurrency';
 import styles from './BillingPage.module.css';
-
-function formatMoney(value) {
-  return `$${Number(value).toFixed(2)}`;
-}
 
 function BillingPage() {
   const [items, setItems] = useState([]);
@@ -172,7 +169,7 @@ function BillingPage() {
                   disabled={item.stock < 1}
                 >
                   <span className={styles.productName}>{item.name}</span>
-                  <span className={styles.productPrice}>{formatMoney(item.price)}</span>
+                  <span className={styles.productPrice}>{formatCurrency(item.price)}</span>
                   <span className={styles.productStock}>Stock: {item.stock}</span>
                 </button>
               ))}
@@ -199,7 +196,7 @@ function BillingPage() {
                   <div key={line.item_id} className={styles.cartRow}>
                     <div>
                       <p className={styles.cartName}>{line.name}</p>
-                      <p className={styles.cartPrice}>{formatMoney(line.price)} each</p>
+                      <p className={styles.cartPrice}>{formatCurrency(line.price)} each</p>
                     </div>
                     <div className={styles.cartControls}>
                       <button
@@ -226,7 +223,7 @@ function BillingPage() {
                       </button>
                     </div>
                     <div className={styles.lineTotal}>
-                      {formatMoney(line.price * line.quantity)}
+                      {formatCurrency(line.price * line.quantity)}
                     </div>
                   </div>
                 ))}
@@ -235,7 +232,7 @@ function BillingPage() {
               <form className={styles.checkoutForm} onSubmit={handleCheckout}>
                 <div className={styles.summaryRow}>
                   <span>Total</span>
-                  <strong>{formatMoney(totalAmount)}</strong>
+                  <strong>{formatCurrency(totalAmount)}</strong>
                 </div>
 
                 <label className={styles.label}>
@@ -253,7 +250,7 @@ function BillingPage() {
 
                 <div className={styles.summaryRow}>
                   <span>Change</span>
-                  <strong>{formatMoney(changeAmount)}</strong>
+                  <strong>{formatCurrency(changeAmount)}</strong>
                 </div>
 
                 <button className={styles.checkoutButton} type="submit" disabled={submitting}>
@@ -279,7 +276,7 @@ function BillingPage() {
                   <span>
                     {line.name} x {line.quantity}
                   </span>
-                  <span>{formatMoney(line.price * line.quantity)}</span>
+                  <span>{formatCurrency(line.price * line.quantity)}</span>
                 </div>
               ))}
             </div>
@@ -287,15 +284,15 @@ function BillingPage() {
             <div className={styles.invoiceSummary}>
               <div className={styles.summaryRow}>
                 <span>Total</span>
-                <strong>{formatMoney(invoice.total_amount)}</strong>
+                <strong>{formatCurrency(invoice.total_amount)}</strong>
               </div>
               <div className={styles.summaryRow}>
                 <span>Cash Received</span>
-                <strong>{formatMoney(invoice.cash_received)}</strong>
+                <strong>{formatCurrency(invoice.cash_received)}</strong>
               </div>
               <div className={styles.summaryRow}>
                 <span>Change</span>
-                <strong>{formatMoney(invoice.change_amount)}</strong>
+                <strong>{formatCurrency(invoice.change_amount)}</strong>
               </div>
             </div>
 

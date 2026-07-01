@@ -3,7 +3,9 @@ import ProtectedRoute from './components/ProtectedRoute';
 import BillingPage from './pages/BillingPage';
 import DashboardPage from './pages/DashboardPage';
 import ItemsPage from './pages/ItemsPage';
+import ItemsetsPage from './pages/ItemsetsPage';
 import LoginPage from './pages/LoginPage';
+import RulesPage from './pages/RulesPage';
 
 function App() {
   return (
@@ -30,6 +32,22 @@ function App() {
         element={
           <ProtectedRoute>
             <BillingPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/itemsets"
+        element={
+          <ProtectedRoute>
+            <ItemsetsPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/rules"
+        element={
+          <ProtectedRoute>
+            <RulesPage />
           </ProtectedRoute>
         }
       />

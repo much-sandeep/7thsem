@@ -4,12 +4,13 @@ import {
   LinearScale,
   PointElement,
   LineElement,
-  BarElement,
+  Filler,
   Title,
   Tooltip,
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { formatCurrency } from '../utils/formatCurrency';
 import styles from './DailySalesChart.module.css';
 
 ChartJS.register(
@@ -17,6 +18,7 @@ ChartJS.register(
   LinearScale,
   PointElement,
   LineElement,
+  Filler,
   Title,
   Tooltip,
   Legend
@@ -30,11 +32,15 @@ function DailySalesChart({ dailySales }) {
     labels,
     datasets: [
       {
-        label: 'Daily Sales ($)',
+        label: 'Sales (NPR)',
         data: values,
         borderColor: '#2563eb',
-        backgroundColor: 'rgba(37, 99, 235, 0.1)',
-        tension: 0.3,
+        backgroundColor: 'rgba(37, 99, 235, 0.12)',
+        pointBackgroundColor: '#2563eb',
+        pointRadius: 3,
+        pointHoverRadius: 5,
+        borderWidth: 2,
+        tension: 0.35,
         fill: true,
       },
     ],
@@ -47,17 +53,30 @@ function DailySalesChart({ dailySales }) {
       legend: { display: false },
       title: {
         display: true,
-        text: 'Daily Sales',
+        text: 'Weekly Sales Trend (Last 7 Days)',
         color: '#0f172a',
         font: { size: 16, weight: '600' },
+        padding: { bottom: 12 },
+      },
+      tooltip: {
+        backgroundColor: '#0f172a',
+        padding: 10,
+        cornerRadius: 8,
+        callbacks: {
+          label: (context) => formatCurrency(context.parsed.y),
+        },
       },
     },
     scales: {
+      x: {
+        grid: { display: false },
+      },
       y: {
         beginAtZero: true,
         ticks: {
-          callback: (value) => `$${value}`,
+          callback: (value) => formatCurrency(value),
         },
+        grid: { color: 'rgba(148, 163, 184, 0.18)' },
       },
     },
   };
@@ -65,7 +84,7 @@ function DailySalesChart({ dailySales }) {
   if (dailySales.length === 0) {
     return (
       <div className={styles.chartCard}>
-        <h3 className={styles.title}>Daily Sales</h3>
+        <h3 className={styles.title}>Weekly Sales Trend</h3>
         <p className={styles.empty}>No sales data yet. Create bills to see trends.</p>
       </div>
     );

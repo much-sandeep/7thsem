@@ -46,6 +46,18 @@ function AppLayout({ title, subtitle, children }) {
         >
           Billing
         </NavLink>
+        <NavLink
+          to="/itemsets"
+          className={({ isActive }) => (isActive ? styles.navLinkActive : styles.navLink)}
+        >
+          Itemsets
+        </NavLink>
+        <NavLink
+          to="/rules"
+          className={({ isActive }) => (isActive ? styles.navLinkActive : styles.navLink)}
+        >
+          Rules
+        </NavLink>
       </nav>
 
       <main className={styles.content}>{children}</main>
