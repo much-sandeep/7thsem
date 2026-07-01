@@ -184,8 +184,6 @@ All prices, totals, and sales figures are formatted in **Nepalese Rupees (NPR)**
 |--------------|--------------|---------|
 | VITE_API_URL | API base URL | /api    |
 
----
 
-## 🎓 Demo Tip
 
-The **Weekly Sales Trend** chart shows bills from the **last 7 days**. If your seed data is older, create a few new bills from the **Billing** page to see the trend and analytics populate.
+
