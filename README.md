@@ -175,6 +175,8 @@ All prices, totals, and sales figures are formatted in **Nepalese Rupees (NPR)**
 | DB_USER        | MySQL user        | root                    |
 | DB_PASSWORD    | MySQL password    | —                       |
 | DB_NAME        | Database name     | pos_operational         |
+| DB_WAREHOUSE_NAME | Archive (warehouse) database name | pos_warehouse |
+| ARCHIVE_PERIOD_DAYS | Age (in days) after which bills are archived to the warehouse | 30 |
 | SESSION_SECRET | Session secret    | —                       |
 | CLIENT_URL     | Frontend origin   | http://localhost:5173   |
 

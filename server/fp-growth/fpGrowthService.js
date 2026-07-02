@@ -10,6 +10,7 @@
  *   6. Generate association rules (support / confidence / lift).
  */
 const { getPool } = require('../config/db');
+const { WAREHOUSE_DB_NAME } = require('../services/archiveService');
 const FPTree = require('./FPTree');
 const { mineFrequentItemsets } = require('./fpMiner');
 const { generateRules } = require('./ruleGenerator');
@@ -68,12 +69,39 @@ async function loadConfig() {
 async function buildTransactions() {
   const pool = getPool();
 
-  const [rows] = await pool.query(`
+  // Operational-only source (original behaviour, used as a safe fallback).
+  const operationalQuery = `
     SELECT bi.bill_id AS billId, i.name AS itemName
     FROM bill_items bi
     INNER JOIN items i ON i.id = bi.item_id
     ORDER BY bi.bill_id ASC
-  `);
+  `;
+
+  // Combined source: operational + archived warehouse transactions. Warehouse
+  // bill_items are joined to the operational `items` table for names (items are
+  // never archived). Bill ids are namespaced per source so an operational bill
+  // and an archived bill can never be merged into a single transaction.
+  const combinedQuery = `
+    SELECT CONCAT('op-', bi.bill_id) AS billId, i.name AS itemName
+    FROM bill_items bi
+    INNER JOIN items i ON i.id = bi.item_id
+    UNION ALL
+    SELECT CONCAT('wh-', wbi.bill_id) AS billId, i.name AS itemName
+    FROM \`${WAREHOUSE_DB_NAME}\`.bill_items wbi
+    INNER JOIN items i ON i.id = wbi.item_id
+  `;
+
+  let rows;
+  try {
+    [rows] = await pool.query(combinedQuery);
+  } catch (error) {
+    // Warehouse may not exist yet — fall back so analytics never break.
+    console.warn(
+      'FP-Growth: warehouse unavailable, using operational data only:',
+      error.message
+    );
+    [rows] = await pool.query(operationalQuery);
+  }
 
   if (!Array.isArray(rows) || rows.length === 0) {
     return [];

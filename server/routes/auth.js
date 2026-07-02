@@ -1,6 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const { getPool } = require('../config/db');
+const archiveService = require('../services/archiveService');
 
 const router = express.Router();
 
@@ -34,6 +35,10 @@ router.post('/login', async (req, res) => {
       username: user.username,
       role: user.role,
     };
+
+    // Fire-and-forget warehouse archive check. Runs after a successful login and
+    // is fully isolated: it never blocks or alters the login response.
+    archiveService.runArchiveCheck().catch(() => {});
 
     return res.json({ user: req.session.user });
   } catch (error) {
