@@ -15,7 +15,7 @@ function AppLayout({ title, subtitle, children }) {
     <div className={styles.page}>
       <header className={styles.header}>
         <div className={styles.headerLeft}>
-          <p className={styles.brand}>SmartBasket Analytics</p>
+          <p className={styles.brand}>Smart Retail Analytics</p>
           <h1 className={styles.title}>{title}</h1>
           {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
         </div>
